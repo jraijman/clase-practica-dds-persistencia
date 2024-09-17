@@ -1,42 +1,44 @@
-package ar.edu.utn.frba.dds.converters;
+package ar.edu.utn.frba.dds.ejercicio_02.converters;
+
+import ar.edu.utn.frba.dds.ejercicio_02.elementos.Arco;
+import ar.edu.utn.frba.dds.ejercicio_02.elementos.ElementoDefensor;
+import ar.edu.utn.frba.dds.ejercicio_02.elementos.Escudo;
+import ar.edu.utn.frba.dds.ejercicio_02.elementos.Espada;
+
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-import ar.edu.utn.frba.dds.models.entities.notificacion.MetodoDeNotificacion;
-import ar.edu.utn.frba.dds.models.entities.notificacion.Email;
-import ar.edu.utn.frba.dds.models.entities.notificacion.Whatsapp;
-import ar.edu.utn.frba.dds.models.entities.notificacion.Telegram;
 
 @Converter(autoApply = true)
-public class MetodoDeNotificacionConverter implements AttributeConverter<MetodoDeNotificacion, String> {
+public class ElementoDefensorConverter implements AttributeConverter<ElementoDefensor, String> {
 
     @Override
-    public String convertToDatabaseColumn(MetodoDeNotificacion metodo) {
+    public String convertToDatabaseColumn(ElementoDefensor metodo) {
         if (metodo == null) {
             return null;
         } else
-        if (metodo instanceof Email) {
-            return "EMAIL";
-        } else if (metodo instanceof Telegram) {
-            return "TELEGRAM";
-        } else if (metodo instanceof Whatsapp) {
-            return "WHATSAPP";
+        if (metodo instanceof Arco) {
+            return "ARCO";
+        } else if (metodo instanceof Espada) {
+            return "ESPADA";
+        } else if (metodo instanceof Escudo) {
+            return "ESCUDO";
         }
-        throw new IllegalArgumentException("Unknown MetodoDeNotificacion type");
+        throw new IllegalArgumentException("Unknown elemento defensor type");
     }
 
     @Override
-    public MetodoDeNotificacion convertToEntityAttribute(String dbData) {
+    public ElementoDefensor convertToEntityAttribute(String dbData) {
         if (dbData == null) {
             return null;
         }
         switch (dbData) {
             //DEBERIAMOS HACER CON UN SERVICE LOCATOR
-            case "EMAIL":
-                return new Email();
-            case "TELEGRAM":
-                return new Telegram();
-            case "WHATSAPP":
-                return new Whatsapp();
+            case "ARCO":
+                return new Arco();
+            case "ESPADA":
+                return new Espada();
+            case "ESCUDO":
+                return new Escudo();
             default:
                 return null;
         }

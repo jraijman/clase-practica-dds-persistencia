@@ -1,12 +1,12 @@
-package ar.edu.utn.frba.dds.converters;
+package ar.edu.utn.frba.dds.ejercicio_02.converters;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-import java.time.LocalDate;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Converter(autoApply = true)
-public class LocalDateConverter  implements AttributeConverter<LocalDate, Date> {
+public class LocalDateConverter implements AttributeConverter<LocalDate, Date> {
     @Override
     public Date convertToDatabaseColumn(LocalDate attribute) {
         return attribute == null ? null : Date.valueOf(attribute);
