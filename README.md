@@ -1,3 +1,5 @@
+Realizado por Jonatan raijman, Guido Gelvan, German Bergera, Juan Aguirre
+
 
  Practica de persistencia de datos.
 *Objetivo: Persistir las clases de dominio en una base de datos relacional.
